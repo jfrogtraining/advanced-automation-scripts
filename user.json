@@ -1,0 +1,8 @@
+{
+    "name": "<pickausername>",
+    "email" : "<addyouremail>",
+    "password": "<provideapassword>",
+    "admin": false,
+    "profileUpdatable": true,
+    "groups" : [ "readers", "<groupfromyourcard>" ]
+}

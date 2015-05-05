@@ -1,18 +1,18 @@
-curl -uadmin:password -X PUT http://lab:8081/artifactory/api/security/users/<yourusername> -H "content-type: application/vnd.org.jfrog.artifactory.security.User+json" -d @user.json
+curl -uadmin:password -X PUT http://lab.lab:8081/artifactory/api/security/users/<yourusername> -H "content-type: application/vnd.org.jfrog.artifactory.security.User+json" -d @user.json
 
-curl –u<user>:<password> -X GET http://lab:8081/artifactory/api/security/encryptedPassword
+curl –u<user>:<password> -X GET http://lab.lab:8081/artifactory/api/security/encryptedPassword
 
-git clone http://lab/demo/artifactory-user-plugins-devenv.git
+git clone http://lab.lab/demo/artifactory-user-plugins-devenv.git
 
-curl -u<user>:<password> -X GET "http:/lab:8081/artifactory/api/search/pattern?pattern=students:art*.lic"
+curl -u<user>:<password> -X GET "http:/lab.lab:8081/artifactory/api/search/pattern?pattern=students:art*.lic"
 
-curl -u<user>:<password> http://lab:8081/artifactory/students/artifactory-1.lic -o artifactory-user-plugins-devenv/local-store/artifactory.lic
+curl -u<user>:<password> http://lab.lab:8081/artifactory/students/artifactory-1.lic -o artifactory-user-plugins-devenv/local-store/artifactory.lic
 
-git clone http://lab/demo/artifactory-user-plugins.git
+git clone http://lab.lab/demo/artifactory-user-plugins.git
 
 ln -s $(pwd)/artifactory-user-plugins/storage/layoutProperties/layoutProperties.groovy $(pwd)/artifactory-user-plugins-devenv/etc/plugins
 
-curl –umarkg:password http://lab:8081/artifactory/students/datastore.zip -O
+curl –umarkg:password http://lab.lab:8081/artifactory/students/datastore.zip -O
 
 curl -uadmin:password -H "X-Explode-Archive: true" -v -X PUT http://localhost:8088/artifactory/uploaded-files/archive.zip -T ./datastore.zip
 

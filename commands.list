@@ -27,3 +27,5 @@ curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -d 'items.find({"@layout.folderIntegrationRevision" : {"$match" : "2015*"}, "@layout.environment" : "PRD" }).include("path", "@layout.folderIntegrationRevision", "@layout.environment", "stat.downloads")'
 
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -T aql.json
+
+groovy cleanup.groovy

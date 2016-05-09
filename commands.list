@@ -4,10 +4,6 @@ curl –u<user>:<password> -X POST http://lab.lab:8081/artifactory/api/security/
 
 git clone https://github.com/jfrogtraining/artifactory-user-plugins-devenv.git
 
-#curl -u<user>:<password> -X GET "http:/lab.lab:8081/artifactory/api/search/pattern?pattern=students:art*.lic"
-
-#curl -u<user>:<password> http://lab.lab:8081/artifactory/students/artifactory-1.lic -o artifactory-user-plugins-devenv/local-store/artifactory.lic
-
 git clone https://github.com/JFrogDev/artifactory-user-plugins.git
 
 cd artifactory-user-plugins-devenv

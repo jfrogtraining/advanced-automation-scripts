@@ -1,6 +1,6 @@
 curl -uadmin:password -X PUT http://lab.lab:8081/artifactory/api/security/users/<yourusername> -H "content-type: application/vnd.org.jfrog.artifactory.security.User+json" -T user.json
 
-curl –u<user>:<password> -X GET http://lab.lab:8081/artifactory/api/security/encryptedPassword
+curl –u<user>:<password> -X POST http://lab.lab:8081/artifactory/api/security/apiKey
 
 git clone https://github.com/jfrogtraining/artifactory-user-plugins-devenv.git
 

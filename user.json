@@ -4,5 +4,5 @@
     "password": "<provideapassword>",
     "admin": false,
     "profileUpdatable": true,
-    "groups" : [ "readers", "<groupfromyourcard>" ]
+    "groups" : [ "readers" ]
 }

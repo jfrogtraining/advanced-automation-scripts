@@ -1,0 +1,8 @@
+{
+    "name": "swampup-custom",
+    "artifactPathPattern": "[org]/[module]/[baseRev](-[folderItegRev])/[module]-[baseRev](-[fileItegRev])-[environment<.+>].[ext]",
+    "distinctiveDescriptorPathPattern": false,
+    "descriptorPathPattern": "[org]/[module]/ivy-[baseRev](-[fileItegRev]).xml",
+    "folderIntegrationRevisionRegExp": "\\d{8}",
+    "fileIntegrationRevisionRegExp": "\\d{8}.\\d{4}"
+}

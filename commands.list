@@ -31,6 +31,8 @@ cd ..
 jfrog rt config --url=https://gcartifactory-us.jfrog.info/artifactory/ --user=<username> –-password=<password>
 jfrog rt dl swampup-cache/aauto-assets/datastore/
 
+#adding custom layout
+curl -uadmin:password -X POST http://localhost:8088/artifactory/api/plugins/execute/addLayout -T swampupLayout.json
 
 curl -uadmin:password -H "X-Explode-Archive: true" -v -X PUT http://localhost:8088/artifactory/uploaded-files/archive.zip -T ./datastore.zip
 

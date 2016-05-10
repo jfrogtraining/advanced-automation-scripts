@@ -23,7 +23,14 @@ jfrog mc rti attach-lic <userName> --bucket-id=abcdefg --bucket-key= 2c1fa1029a2
 ./gradlew pre
 ./gradlew start
 
-curl –u<user>:<password> http://lab.lab:8081/artifactory/students/datastore.zip -O
+#Finish up plugin work
+./gradlew workOnPlugin -DpluginName=config/repoLayoutsConfig
+cd ..
+
+#Config CLI for Lab Artifactory and DL (TODO: Update URL)
+jfrog rt config --url=https://gcartifactory-us.jfrog.info/artifactory/ --user=<username> –-password=<password>
+jfrog rt dl swampup-cache/aauto-assets/datastore/
+
 
 curl -uadmin:password -H "X-Explode-Archive: true" -v -X PUT http://localhost:8088/artifactory/uploaded-files/archive.zip -T ./datastore.zip
 

@@ -1,0 +1,10 @@
+{
+    "key": "uploaded-local",
+    "rclass" : "local",
+    "packageType": "generic",
+    "description": "Demo repository for uploading data to for Advanced Automation lab",
+    "notes": "created with uploaded-local.json, layout is swampupLayout.json",
+    "includesPattern": "**/*",
+    "excludesPattern": "",
+    "repoLayoutRef" : "swampup-custom"
+}

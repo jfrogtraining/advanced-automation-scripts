@@ -34,6 +34,9 @@ jfrog rt dl swampup-cache/aauto-assets/datastore/
 #adding custom layout
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/plugins/execute/addLayout -T swampupLayout.json
 
+#create repository uploaded-local:
+curl -uadmin:password -H "Content-Type: application/vnd.org.jfrog.artifactory.repositories.LocalRepositoryConfiguration+json" -X PUT http://localhost:8088/artifactory/api/repositories/uploaded-local -T uploaded-local.json
+
 curl -uadmin:password -H "X-Explode-Archive: true" -v -X PUT http://localhost:8088/artifactory/uploaded-files/archive.zip -T ./datastore.zip
 
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -d 'items.find()'

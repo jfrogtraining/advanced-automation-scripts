@@ -40,10 +40,12 @@ curl -uadmin:password -H "Content-Type: application/vnd.org.jfrog.artifactory.re
 #Upload data:
 jfrog rt c --url="http://localhost:8088/artifactory/" --user=admin --password=password
 cd aauto-assets/datastore
-jfrog rt u --flat=false "./*" uploaded-local
+jfrog rt u --flat=false --props="uploadCall=1" "./*" uploaded-local
 cd ../..
 
 #AQL Section
+jfrog rt mv "uploaded-local/*12*" "ext-release-local"
+
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -d 'items.find()'
 
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -d 'items.find().include("path", "@layout.folderIntegrationRevision", "stat.downloads")'

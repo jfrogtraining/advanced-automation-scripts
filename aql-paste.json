@@ -1,0 +1,13 @@
+items.find( \
+    { \
+	"$and" : [ \
+	    { "@layout.environment" : "DEV" }, \
+	    { \
+	    "$msp" : [ \
+		{"property.key" : {"$eq":"layout.folderIntegrationRevision"}}, \
+		{"property.value" : {"$nmatch" : "2015*"}} \
+	    ] \
+	    } \
+	] \
+    } \
+).include("path", "@layout.folderIntegrationRevision", "@layout.environment", "stat.downloads")

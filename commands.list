@@ -110,3 +110,6 @@ groovy artifactory-scripts/cleanup/aqlCleanup.groovy
 
 #Or delete with CLI
 jfrog rt del --props="layout.environment=DEV" "ext-release-local/*"
+
+#Upload a new version using placeholders:
+jfrog rt u --flat=false --recursive=true --props="uploadCall=2" "(*)/(*)/(*)-2015(*)/(*)-(*)-2015(*)" uploaded-local/{1}/{2}/1.7.0-2015{4}/{5}-1.7.0-2015{7}

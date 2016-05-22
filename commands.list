@@ -25,7 +25,7 @@ mkdir $HOME/swampup
 1. git clone https://github.com/jfrogtraining/advanced-automation-scripts.git
 cd advanced-automation-scripts
 curl -uadmin:password -X PUT http://192.168.1.139:8081/artifactory/api/security/users/<yourusername> -H "content-type: application/vnd.org.jfrog.artifactory.security.User+json" -T user.json
-curl –u<user>:<password> -X POST http://lab.lab:8081/artifactory/api/security/apiKey
+curl -u<user>:<password> -X POST http://192.168.1.139:8081/artifactory/api/security/key
 
 ################################################################
 ## Start User Plugin Development Environment                  ##
@@ -40,16 +40,14 @@ cd $HOME/swampup
 ################################################################
 ## Use CLI1.2 to get Artifactory License from JFMC to install on local artifactory
 ## If installing with Homebrew
-export HOMEBREW_BOTTLE_DOMAIN=https://192.168.1.139:8081/artifactory
+export HOMEBREW_BOTTLE_DOMAIN=http://192.168.1.139:8081/artifactory
 brew install jfrog-cli-go
 ## else 
 browse to: https://192.168.0.1:8081/artifactory/jswampup-remote-cache/cli-1.2
 download binary appropriate to your distribution onto your 
 ##
-cd $HOME/swampup
-sudo chmod -r 777 $HOME/.jfrog
-sudo chown stanleyfong:staff $HOME/.jfrog
-jfrog mc c --url=http://192.168.1.139:8081 --user=admin --password=password --interactive=false
+
+jfrog mc c --url=http://192.168.1.139:8085 --user=admin --password=password --interactive=false
 jfrog mc rti attach-lic <userName> --bucket-id=1831531631 --bucket-key=68b5f7dcbe7c25dcf2ef2952c7429b99ec217d01a832eb6c4261738187d2e097  --license-path=local-store/artifactory.lic
 
 ################################################################
@@ -62,13 +60,12 @@ cd artifactory-user-plugins-devenv
 ## Populate your local artifactory with custom layout data                             ##
 #########################################################################################
 #Use User Plugin to create a custom layout
-cd artifactory-user-plugins
+cd artifactory-user-plugins-devenv
 ./gradlew workOnPlugin -DpluginName=config/repoLayoutsConfig
 
 #########################################################################################
 ## Lets go get the data from lab artifactory and upload to your local repository using CLI 
-cd $HOME/swampup
-jfrog rt config --url=https://192.168.1.139:8081/artifactory/ --user=<username> –-password=<password>
+jfrog rt config --url=http://192.168.1.139:8081/artifactory/ --user=<username> –-password=<password>
 jfrog rt dl jswampup-remote-cache/aauto-assets/datastore/
 
 #adding custom layout
@@ -87,6 +84,7 @@ cd $HOME/swampup
 ## AQL Search on the custom data loaded                                                ##
 #########################################################################################
 #AQL Section
+curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -d 'items.find()'
 jfrog rt mv "uploaded-local/*12*" "ext-release-local"
 
 curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -d 'items.find()'
@@ -104,7 +102,6 @@ curl -uadmin:password -X POST http://localhost:8088/artifactory/api/search/aql -
 #########################################################################################
 ## Using clean up scripts                                                              ##
 #########################################################################################
-cd $HOME/swampup
 git clone https://github.com/JFrogDev/artifactory-scripts.git
 groovy artifactory-scripts/cleanup/aqlCleanup.groovy
 

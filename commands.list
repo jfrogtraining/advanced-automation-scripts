@@ -65,7 +65,7 @@ cd artifactory-user-plugins-devenv
 
 #########################################################################################
 ## Lets go get the data from lab artifactory and upload to your local repository using CLI 
-jfrog rt config --url=http://192.168.1.139:8081/artifactory/ --user=<username> –-password=<password>
+jfrog rt config --url="http://192.168.1.139:8081/artifactory/" --user=<user name> --password=<password>
 jfrog rt dl jswampup-remote-cache/aauto-assets/datastore/
 
 #adding custom layout

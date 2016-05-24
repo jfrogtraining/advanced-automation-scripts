@@ -25,7 +25,7 @@ mkdir $HOME/swampup
 1. git clone https://github.com/jfrogtraining/advanced-automation-scripts.git
 cd advanced-automation-scripts
 curl -uadmin:password -X PUT http://192.168.1.139:8081/artifactory/api/security/users/<yourusername> -H "content-type: application/vnd.org.jfrog.artifactory.security.User+json" -T user.json
-curl -u<user>:<password> -X POST http://192.168.1.139:8081/artifactory/api/security/key
+curl -u<user>:<password> -X POST http://192.168.1.139:8081/artifactory/api/security/apiKey
 
 ################################################################
 ## Start User Plugin Development Environment                  ##
